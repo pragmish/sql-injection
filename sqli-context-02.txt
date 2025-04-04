@@ -1,0 +1,28 @@
+SQL injection vulnerability allowing login bypass, without knowing admin password
+
+To solve the lab, perform a SQL injection attack that logs in to the application as the administrator user.
+
+To implement this manually, first check if application is vulnerable to SQL injection, how? 
+Add ' in password, you would get internal server error
+
+
+Once confirmed, instead of giving administrator in username, give administrator'-- and anything in password
+Above payload means, you are adding a valid username i.e. administrator but closing quotes and comments, so password isn't required. 
+
+
+Before
+SELECT * FROM users WHERE username = 'administrator' AND password = 'password1'
+
+SELECT * from users WHERE username= 'administrator'-- AND password = 'password1'
+
+==
+Before writing code, we understood why we are using sessions
+
+CSRF- Cross site request forgery
+Get csrf token
+Create exploit function with csrf, url and sqli payload as input
+
+
+Final output command
+
+python3 sqli-lab-02.py "https://0ad8002103a880198cc323ca00370061.web-security-academy.net/login" " administrator'-- "
